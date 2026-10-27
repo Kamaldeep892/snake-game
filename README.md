@@ -2,7 +2,7 @@
 
 A responsive Snake game built with plain HTML, CSS and JavaScript. No frameworks, no build step, no server needed.
 
-**Live demo:** https://your-site-name.onrender.com
+**Live demo:** https://snake-game-u05y.onrender.com
 
 ## Features
 
