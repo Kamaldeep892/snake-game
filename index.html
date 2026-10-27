@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- viewport-fit + no zoom keeps the layout stable on phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Snake</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+
+    <!-- Header: title + score boards -->
+    <header class="topbar">
+      <h1 class="title">Snake</h1>
+      <div class="scores" aria-live="polite">
+        <div class="score-box">
+          <span class="score-label">Score</span>
+          <span class="score-value" id="score">0</span>
+        </div>
+        <div class="score-box">
+          <span class="score-label" id="bestLabel">Best</span>
+          <span class="score-value" id="highScore">0</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Difficulty selector (locked while a game is in progress) -->
+    <section class="levels" role="radiogroup" aria-label="Difficulty">
+      <button class="level-btn" type="button" role="radio" data-level="easy"   aria-checked="false">Easy</button>
+      <button class="level-btn" type="button" role="radio" data-level="medium" aria-checked="true">Medium</button>
+      <button class="level-btn" type="button" role="radio" data-level="hard"   aria-checked="false">Hard</button>
+    </section>
+
+    <!-- Game board -->
+    <section class="board-wrap" id="boardWrap">
+      <canvas id="board" width="600" height="600" aria-label="Snake game board"></canvas>
+
+      <!-- Overlay shown on start, pause and game over -->
+      <div class="overlay" id="overlay">
+        <h2 class="overlay-title" id="overlayTitle">Ready?</h2>
+        <p class="overlay-final" id="overlayFinal" hidden>
+          Final score <strong id="finalScore">0</strong>
+        </p>
+        <p class="overlay-text" id="overlayText">
+          Steer with the arrow keys or W A S D. On a phone, swipe or use the pad below.
+        </p>
+      </div>
+    </section>
+
+    <!-- Main controls -->
+    <section class="controls">
+      <button class="btn btn-primary" id="startBtn" type="button">Start game</button>
+      <button class="btn" id="pauseBtn" type="button" disabled>Pause</button>
+      <button class="btn" id="restartBtn" type="button">Restart game</button>
+      <button class="btn btn-icon" id="soundBtn" type="button" aria-pressed="true" aria-label="Sound on" title="Toggle sound">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <path class="icon-speaker" d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/>
+          <path class="icon-waves" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path class="icon-mute" d="M16 9l5 6M21 9l-5 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </section>
+
+    <!-- On-screen direction pad (shown on touch devices) -->
+    <section class="dpad" aria-label="Touch controls">
+      <button class="dpad-btn dpad-up"    type="button" data-dir="up"    aria-label="Up">▲</button>
+      <button class="dpad-btn dpad-left"  type="button" data-dir="left"  aria-label="Left">◀</button>
+      <button class="dpad-btn dpad-down"  type="button" data-dir="down"  aria-label="Down">▼</button>
+      <button class="dpad-btn dpad-right" type="button" data-dir="right" aria-label="Right">▶</button>
+    </section>
+
+    <p class="hint">Space or P pauses · Enter starts</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
